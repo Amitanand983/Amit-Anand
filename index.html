@@ -3,443 +3,597 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amit Anand - AI & Software Innovator</title>
+    <title>Amit Anand - Full Stack Commander | AI Specialist</title>
     
-    <!-- External CSS -->
-    <link rel="stylesheet" href="styles/main.css">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Google Fonts: Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- External Libraries -->
+    <!-- GSAP for animations -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <!-- Lenis Smooth Scroll Library -->
-    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.8/dist/lenis.css">
-    <script src="https://unpkg.com/lenis@1.3.8/dist/lenis.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles/main.css">
 </head>
-<body class="text-gray-800">
-    <div id="scroll-progress"></div>
-
-    <!-- Header & Navigation -->
-    <header class="glass-header sticky top-0 z-50">
-        <nav class="container mx-auto px-2 sm:px-4 md:px-8 py-3 flex flex-wrap justify-between items-center">
-            <a href="#" class="text-3xl font-bold text-gray-900 tracking-tight">Amit Anand</a>
-            <div class="hidden md:flex items-center space-x-8 text-lg">
-                <a href="#about" class="nav-link text-gray-600 hover:text-indigo-600 transition duration-300">About</a>
-                <a href="#experience" class="nav-link text-gray-600 hover:text-indigo-600 transition duration-300">Experience</a>
-                <a href="#projects" class="nav-link text-gray-600 hover:text-indigo-600 transition duration-300">Projects</a>
-                <a href="#publications" class="nav-link text-gray-600 hover:text-indigo-600 transition duration-300">Publications</a>
-                <a href="#achievements" class="nav-link text-gray-600 hover:text-indigo-600 transition duration-300">Achievements</a>
-                <a href="#skills" class="nav-link text-gray-600 hover:text-indigo-600 transition duration-300">Skills</a>
-                <a href="#contact" class="nav-link text-gray-600 hover:text-indigo-600 transition duration-300">Contact</a>
-            </div>
-            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
-        </nav>
-        <div id="mobile-menu" class="hidden md:hidden px-2 sm:px-4 pb-4">
-            <a href="#about" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">About</a>
-            <a href="#experience" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Experience</a>
-            <a href="#projects" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Projects</a>
-            <a href="#publications" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Publications</a>
-            <a href="#achievements" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Achievements</a>
-            <a href="#skills" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Skills</a>
-            <a href="#contact" class="nav-link block py-2 text-gray-600 hover:text-indigo-600">Contact</a>
-        </div>
-    </header>
-
-    <!-- Interactive Resume Button -->
-    <button id="resume-float-btn" class="fixed bottom-32 right-6 z-50 bg-indigo-600 hover:bg-pink-500 text-white font-bold py-3 px-6 rounded-full shadow-lg neon-border hover:neon-hover transition-all duration-300 flex items-center gap-2" style="font-size:1.1rem;">
-        <i class="fas fa-id-card-alt"></i> View Interactive Resume
-    </button>
-
-    <!-- Interactive Resume Overlay -->
-    <div id="resume-overlay" class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-lg transition-all duration-500 opacity-0 pointer-events-none">
-        <div class="relative w-full max-w-2xl mx-auto px-2">
-            <button id="resume-close-btn" class="absolute top-4 right-4 text-3xl text-indigo-300 hover:text-pink-400 transition">
-                <i class="fas fa-times-circle"></i>
-            </button>
-            <div id="resume-cards" class="overflow-hidden">
-                <!-- Resume cards will be injected here -->
-            </div>
-            <div class="flex justify-between items-center mt-6">
-                <button id="resume-prev" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full shadow neon-border hover:neon-hover text-lg">
-                    <i class="fas fa-arrow-left"></i>
-                </button>
-                <button id="resume-next" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-full shadow neon-border hover:neon-hover text-lg">
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-        </div>
+<body>
+    <!-- Audio Controls -->
+    <div class="audio-controls">
+        <button id="audio-toggle" class="audio-btn">
+            <i class="fas fa-volume-up"></i>
+        </button>
     </div>
 
-    <!-- Main Content -->
-    <main class="dark-bg">
-        <!-- Hero Section -->
-        <section id="about" class="hero-section text-white text-center py-24 md:py-32 dark-bg">
-            <div class="hero-shape hero-shape-1"></div>
-            <div class="hero-shape hero-shape-2"></div>
-            <div class="hero-shape hero-shape-3"></div>
-            <canvas id="matrix-canvas" class="parallax-bg"></canvas>
-            <div class="relative z-10 container mx-auto px-4 sm:px-6 md:px-8 hero-glass dark-glass py-10 md:py-16 mt-8 md:mt-16">
-                <div class="scroll-down-indicator">
-                    <span style="box-shadow: 0 0 0 4px #6366f1, 0 0 16px #a5b4fc, 0 0 32px #6366f1;"></span>
-                    <svg width="44" height="44" class="absolute -z-1" style="top:-10px;left:50%;transform:translateX(-50%);pointer-events:none;" viewBox="0 0 44 44">
-                        <circle cx="22" cy="22" r="18" fill="none" stroke="#6366f1" stroke-width="3" opacity="0.5">
-                            <animate attributeName="stroke-dasharray" values="0,150;90,150;0,150" dur="2s" repeatCount="indefinite"/>
-                        </circle>
-                    </svg>
-                </div>
-                <img src="121176648.jpeg" alt="Amit Anand" class="w-24 sm:w-32 h-24 sm:h-32 rounded-full mx-auto mb-6 border-4 border-white/50 shadow-lg animate-profile">
-                <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold text-white mb-2 animate-title">Amit Anand</h1>
-                <p class="text-lg sm:text-xl md:text-2xl text-indigo-300 font-medium mb-6 animate-subtitle h-8">
-                    <span id="typed-subtitle"></span>
-                </p>
-                <p class="max-w-2xl sm:max-w-3xl mx-auto text-base sm:text-lg text-gray-200 mb-8 animate-description">
-                    A passionate and driven student building efficient, scalable AI systems and exploring the frontiers of multimodal learning and network optimization.
-                </p>
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 animate-buttons">
-                    <a href="Resume.pdf" download="AmitAnand_Resume.pdf" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-lg w-full sm:w-auto text-center">
-                        <i class="fas fa-download mr-2"></i> Download CV
-                    </a>
-                    <a href="#contact" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-lg w-full sm:w-auto text-center">
-                        <i class="fas fa-paper-plane mr-2"></i> Contact Me
-                    </a>
+    <!-- Navigation -->
+    <nav class="military-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>COMMANDER AMIT</span>
+            </div>
+            <div class="nav-missions">
+                <a href="#base" class="mission-btn active" data-mission="base">
+                    <i class="fas fa-home"></i>
+                    <span>BASE</span>
+                </a>
+                <a href="#intel" class="mission-btn" data-mission="intel">
+                    <i class="fas fa-user-secret"></i>
+                    <span>INTEL</span>
+                </a>
+                <a href="#arsenal" class="mission-btn" data-mission="arsenal">
+                    <i class="fas fa-tools"></i>
+                    <span>ARSENAL</span>
+                </a>
+                <a href="#missions" class="mission-btn" data-mission="missions">
+                    <i class="fas fa-crosshairs"></i>
+                    <span>MISSIONS</span>
+                </a>
+                <a href="#medals" class="mission-btn" data-mission="medals">
+                    <i class="fas fa-medal"></i>
+                    <span>MEDALS</span>
+                </a>
+                <a href="#contact" class="mission-btn" data-mission="contact">
+                    <i class="fas fa-radio"></i>
+                    <span>CONTACT</span>
+                </a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Dog Tag Banner -->
+    <section id="base" class="hero-section">
+        <div class="dog-tag-banner">
+            <div class="chain-left"></div>
+            <div class="chain-right"></div>
+            <div class="dog-tag">
+                <div class="dog-tag-content">
+                    <h1 class="commander-name">AMIT ANAND</h1>
+                    <p class="commander-title">FULL STACK COMMANDER | AI SPECIALIST</p>
+                    <div class="rank-badge">
+                        <i class="fas fa-star"></i>
+                        <span>RANK: TECH SERGEANT</span>
+                        <i class="fas fa-star"></i>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <div class="container mx-auto px-6 py-12">
-            <!-- Experience Section -->
-            <section id="experience" class="py-12 md:py-16 dark-section">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-16 dark-heading">Career Journey</h2>
-                <div class="timeline">
-                    <div class="timeline-container left parallax-on-scroll">
-                        <div class="timeline-content">
-                            <h3 class="text-2xl font-semibold text-indigo-300">Technical Intern</h3>
-                            <p class="text-lg text-indigo-400 mb-2">Siemens</p>
-                            <p class="text-sm text-indigo-200 mb-4">May 2025 - Present | Bengaluru</p>
-                            <ul class="list-disc list-inside text-indigo-100 space-y-2">
-                                <li>Automated performance and power profiling of AI workflows for the COSEE project.</li>
-                            </ul>
+        </div>
+        
+        <!-- Animated Soldier Avatar -->
+        <div class="soldier-avatar">
+            <div class="soldier-container">
+                <div class="soldier-body">
+                    <div class="helmet">
+                        <div class="helmet-star"></div>
+                    </div>
+                    <div class="face">
+                        <div class="eyes">
+                            <div class="eye left"></div>
+                            <div class="eye right"></div>
                         </div>
                     </div>
-                    <div class="timeline-container right parallax-on-scroll">
-                        <div class="timeline-content">
-                            <h3 class="text-2xl font-semibold text-indigo-300">UG Tutor, Professional Communication</h3>
-                            <p class="text-lg text-indigo-400 mb-2">RGIPT</p>
-                            <p class="text-sm text-indigo-200 mb-4">Jan 2024 - May 2024</p>
-                            <p class="text-indigo-100">Provided tutoring to second-year undergraduate students.</p>
+                    <div class="uniform">
+                        <div class="badge"></div>
+                        <div class="buttons">
+                            <div class="button"></div>
+                            <div class="button"></div>
+                            <div class="button"></div>
                         </div>
                     </div>
-                </div>
-            </section>
-
-            <!-- Projects Section -->
-            <section id="projects" class="py-12 md:py-16 dark-section">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 dark-heading">Signature Projects</h2>
-                <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
-                    <div class="project-card card-animated-border dark-card neon-border hover:neon-hover p-8 rounded-xl border shadow-lg" data-modal-target="summai-modal">
-                        <h3 class="text-2xl font-semibold mb-2">SummAI</h3>
-                        <p class="text-indigo-500 mb-4">Multimodal Summarization & Q&A</p>
-                        <p class="text-gray-600">AI-driven platform to process text, audio, and video.</p>
-                        <div class="text-right mt-4 text-indigo-600 font-semibold">
-                            View Details <i class="fas fa-arrow-right ml-1"></i>
-                        </div>
-                    </div>
-                    <div class="project-card card-animated-border dark-card neon-border hover:neon-hover p-8 rounded-xl border shadow-lg" data-modal-target="amazon-modal">
-                        <h3 class="text-2xl font-semibold mb-2">Amazon ML Challenge 2024</h3>
-                        <p class="text-indigo-500 mb-4">Text Extraction from Images</p>
-                        <p class="text-gray-600">Hybrid OCR and NLP approach with a fine-tuned LLaMA 3.1 8B model.</p>
-                        <div class="text-right mt-4 text-indigo-600 font-semibold">
-                            View Details <i class="fas fa-arrow-right ml-1"></i>
-                        </div>
+                    <div class="arms">
+                        <div class="arm left"></div>
+                        <div class="arm right"></div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </div>
 
-            <!-- Contributions Section -->
-            <section id="contributions" class="py-12 md:py-16 dark-section">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 dark-heading">Open Source Contributions</h2>
-                <div class="max-w-3xl mx-auto grid grid-cols-1 gap-6 md:gap-10">
-                    <div class="project-card card-animated-border dark-card neon-border hover:neon-hover p-8 rounded-xl border shadow-lg flex flex-col items-center text-center">
-                        <div class="mb-4">
-                            <i class="fab fa-github text-5xl text-indigo-400"></i>
-                        </div>
-                        <h3 class="text-2xl font-semibold mb-2">GitHub Contributions</h3>
-                        <p class="text-indigo-500 mb-4">123 contributions in the last year</p>
-                        <img src="https://ghchart.rshah.org/Amitanand983" alt="Amitanand983's Github chart" class="w-full max-w-xl mx-auto rounded-lg border border-indigo-400 mb-6 bg-gray-900 p-2" style="background:#161b22;">
-                        <a href="https://github.com/Amitanand983" target="_blank" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-lg w-full sm:w-auto text-center flex items-center justify-center gap-2">
-                            <i class="fab fa-github mr-2"></i> View My GitHub
+        <!-- Mission Stats -->
+        <div class="mission-stats">
+            <div class="stat-crate">
+                <div class="stat-icon"><i class="fas fa-code"></i></div>
+                <div class="stat-value">50+</div>
+                <div class="stat-label">MISSIONS COMPLETED</div>
+            </div>
+            <div class="stat-crate">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-value">100+</div>
+                <div class="stat-label">ALLIES RECRUITED</div>
+            </div>
+            <div class="stat-crate">
+                <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+                <div class="stat-value">15+</div>
+                <div class="stat-label">MEDALS EARNED</div>
+            </div>
+        </div>
+
+        <!-- Deploy Buttons -->
+        <div class="deploy-buttons">
+            <a href="#missions" class="deploy-btn primary">
+                <i class="fas fa-rocket"></i>
+                <span>START MISSION</span>
+            </a>
+            <a href="Resume.pdf" download class="deploy-btn secondary">
+                <i class="fas fa-download"></i>
+                <span>DOWNLOAD INTEL</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Intel Section (About) -->
+    <section id="intel" class="intel-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-user-secret"></i>
+                CLASSIFIED INTEL
+            </h2>
+        </div>
+        
+        <div class="intel-container">
+            <div class="intel-crate">
+                <div class="crate-header">
+                    <h3>MISSION BRIEFING</h3>
+                    <div class="classification">TOP SECRET</div>
+                </div>
+                <div class="intel-content">
+                    <p>A passionate and driven student building efficient, scalable AI systems and exploring the frontiers of multimodal learning and network optimization. Currently serving as Technical Intern at Siemens, specializing in AI workflow automation and performance optimization.</p>
+                    
+                    <div class="current-mission">
+                        <h4><i class="fas fa-crosshairs"></i> CURRENT MISSION</h4>
+                        <p>Technical Intern at Siemens - Automating performance and power profiling of AI workflows for the COSEE project.</p>
+                    </div>
+
+                    <div class="education-intel">
+                        <h4><i class="fas fa-graduation-cap"></i> TRAINING ACADEMY</h4>
+                        <p><strong>Rajiv Gandhi Institute of Petroleum Technology (RGIPT)</strong></p>
+                        <p>B.Tech, Computer Science & Engineering (2021 - 2025)</p>
+                        <p>Combat Rating: 8.1/10 CGPA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Arsenal Section (Skills) -->
+    <section id="arsenal" class="arsenal-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-tools"></i>
+                WEAPON ARSENAL
+            </h2>
+        </div>
+        
+        <div class="arsenal-grid">
+            <div class="weapon-crate" data-weapon="python">
+                <div class="weapon-icon">
+                    <i class="fab fa-python"></i>
+                </div>
+                <div class="weapon-name">PYTHON</div>
+                <div class="weapon-level">
+                    <div class="level-bar">
+                        <div class="level-fill" style="width: 95%"></div>
+                    </div>
+                    <span class="level-text">EXPERT</span>
+                </div>
+            </div>
+
+            <div class="weapon-crate" data-weapon="javascript">
+                <div class="weapon-icon">
+                    <i class="fab fa-js-square"></i>
+                </div>
+                <div class="weapon-name">JAVASCRIPT</div>
+                <div class="weapon-level">
+                    <div class="level-bar">
+                        <div class="level-fill" style="width: 85%"></div>
+                    </div>
+                    <span class="level-text">ADVANCED</span>
+                </div>
+            </div>
+
+            <div class="weapon-crate" data-weapon="cpp">
+                <div class="weapon-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="weapon-name">C/C++</div>
+                <div class="weapon-level">
+                    <div class="level-bar">
+                        <div class="level-fill" style="width: 80%"></div>
+                    </div>
+                    <span class="level-text">ADVANCED</span>
+                </div>
+            </div>
+
+            <div class="weapon-crate" data-weapon="pytorch">
+                <div class="weapon-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <div class="weapon-name">PYTORCH</div>
+                <div class="weapon-level">
+                    <div class="level-bar">
+                        <div class="level-fill" style="width: 90%"></div>
+                    </div>
+                    <span class="level-text">EXPERT</span>
+                </div>
+            </div>
+
+            <div class="weapon-crate" data-weapon="tensorflow">
+                <div class="weapon-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="weapon-name">TENSORFLOW</div>
+                <div class="weapon-level">
+                    <div class="level-bar">
+                        <div class="level-fill" style="width: 85%"></div>
+                    </div>
+                    <span class="level-text">ADVANCED</span>
+                </div>
+            </div>
+
+            <div class="weapon-crate" data-weapon="langchain">
+                <div class="weapon-icon">
+                    <i class="fas fa-link"></i>
+                </div>
+                <div class="weapon-name">LANGCHAIN</div>
+                <div class="weapon-level">
+                    <div class="level-bar">
+                        <div class="level-fill" style="width: 88%"></div>
+                    </div>
+                    <span class="level-text">EXPERT</span>
+                </div>
+            </div>
+
+            <div class="weapon-crate" data-weapon="docker">
+                <div class="weapon-icon">
+                    <i class="fab fa-docker"></i>
+                </div>
+                <div class="weapon-name">DOCKER</div>
+                <div class="weapon-level">
+                    <div class="level-bar">
+                        <div class="level-fill" style="width: 75%"></div>
+                    </div>
+                    <span class="level-text">INTERMEDIATE</span>
+                </div>
+            </div>
+
+            <div class="weapon-crate" data-weapon="sql">
+                <div class="weapon-icon">
+                    <i class="fas fa-database"></i>
+                </div>
+                <div class="weapon-name">SQL</div>
+                <div class="weapon-level">
+                    <div class="level-bar">
+                        <div class="level-fill" style="width: 82%"></div>
+                    </div>
+                    <span class="level-text">ADVANCED</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Missions Section (Projects) -->
+    <section id="missions" class="missions-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-crosshairs"></i>
+                COMPLETED MISSIONS
+            </h2>
+        </div>
+        
+        <div class="missions-grid">
+            <div class="mission-briefing" data-mission="summai">
+                <div class="mission-header">
+                    <div class="mission-status completed">COMPLETED</div>
+                    <div class="mission-difficulty">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="mission-content">
+                    <h3 class="mission-name">OPERATION SUMMAI</h3>
+                    <p class="mission-type">Multimodal Summarization & Q&A</p>
+                    <p class="mission-description">AI-driven platform to process text, audio, and video content with advanced summarization capabilities.</p>
+                    
+                    <div class="mission-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Streamlit</span>
+                        <span class="tech-tag">Groq API</span>
+                        <span class="tech-tag">Whisper</span>
+                    </div>
+                    
+                    <div class="mission-actions">
+                        <button class="action-btn view-intel" data-target="summai">
+                            <i class="fas fa-eye"></i>
+                            VIEW INTEL
+                        </button>
+                        <a href="#" class="action-btn deploy" target="_blank">
+                            <i class="fas fa-external-link-alt"></i>
+                            DEPLOY
                         </a>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Publications Section -->
-            <section id="publications" class="py-16 dark-section">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 dark-heading">Authored Publications</h2>
-                <div class="max-w-4xl mx-auto space-y-6 px-2 sm:px-4">
-                    <a href="#" class="publication-card card-animated-border dark-card neon-border hover:neon-hover block p-4 md:p-6 rounded-xl shadow-md border transition-all duration-300">
-                        <p class="text-base sm:text-lg md:text-xl font-semibold">A Low-Overhead CNN-Based Approach For Sleep Posture Recognition With Device-Free Monitoring System using UWB Radar</p>
-                        <p class="italic mt-1 text-sm sm:text-base text-indigo-300">EAI BODYNETS 2024 - <span class="font-medium text-pink-400">Best Paper Award</span></p>
-                    </a>
-                    <a href="#" class="publication-card card-animated-border dark-card neon-border hover:neon-hover block p-4 md:p-6 rounded-xl shadow-md border transition-all duration-300">
-                        <p class="text-base sm:text-lg md:text-xl font-semibold">Knowledge Distillation-Based AIoT Framework for Efficient Wireless Gesture Sensing in B5G/6G Networks</p>
-                        <p class="italic mt-1 text-sm sm:text-base text-indigo-300">IEEE Network Magazine 2025 (Accepted)</p>
-                    </a>
-                </div>
-            </section>
-
-            <!-- Achievements Section -->
-            <section id="achievements" class="py-16 dark-section">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 dark-heading">Recognition & Achievements</h2>
-                <div class="max-w-6xl mx-auto">
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                        <!-- Academic Excellence -->
-                        <div class="achievement-card card-animated-border dark-card neon-border hover:neon-hover p-6 rounded-xl border shadow-lg text-center transition-all duration-300">
-                            <div class="achievement-icon mb-4">
-                                <i class="fas fa-trophy text-4xl text-yellow-400"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 text-indigo-300">Academic Excellence</h3>
-                            <p class="text-indigo-200 mb-3">Merit Scholarship</p>
-                            <div class="achievement-details text-sm text-indigo-100">
-                                <p class="mb-2"><span class="font-semibold text-pink-400">CGPA:</span> <span class="text-indigo-200">8.1/10</span></p>
-                                <p class="mb-2"><span class="font-semibold text-pink-400">Dean's List:</span> <span class="text-indigo-200">All Semesters</span></p>
-                                <p><span class="font-semibold text-pink-400">Rank:</span> <span class="text-indigo-200">Top 5% of Class</span></p>
-                            </div>
-                        </div>
-
-                        <!-- Competition Success -->
-                        <div class="achievement-card card-animated-border dark-card neon-border hover:neon-hover p-6 rounded-xl border shadow-lg text-center transition-all duration-300">
-                            <div class="achievement-icon mb-4">
-                                <i class="fas fa-medal text-4xl text-blue-400"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 text-indigo-300">Competition Success</h3>
-                            <p class="text-indigo-200 mb-3">Amazon ML Challenge 2024</p>
-                            <div class="achievement-details text-sm text-indigo-100">
-                                <p class="mb-2"><span class="font-semibold text-pink-400">Rank:</span> <span class="text-indigo-200">Top 200</span></p>
-                                <p class="mb-2"><span class="font-semibold text-pink-400">Participants:</span> <span class="text-indigo-200">75,000+</span></p>
-                                <p><span class="font-semibold text-pink-400">Category:</span> <span class="text-indigo-200">Text Extraction</span></p>
-                            </div>
-                        </div>
-
-                        <!-- Research Recognition -->
-                        <div class="achievement-card card-animated-border dark-card neon-border hover:neon-hover p-6 rounded-xl border shadow-lg text-center transition-all duration-300">
-                            <div class="achievement-icon mb-4">
-                                <i class="fas fa-award text-4xl text-green-400"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 text-indigo-300">Research Recognition</h3>
-                            <p class="text-indigo-200 mb-3">Best Paper Award</p>
-                            <div class="achievement-details text-sm text-indigo-100">
-                                <p class="mb-2"><span class="font-semibold text-pink-400">Conference:</span> <span class="text-indigo-200">EAI BODYNETS 2024</span></p>
-                                <p class="mb-2"><span class="font-semibold text-pink-400">Paper:</span> <span class="text-indigo-200">Sleep Posture Recognition</span></p>
-                                <p><span class="font-semibold text-pink-400">Impact:</span> <span class="text-indigo-200">Device-Free Monitoring</span></p>
-                            </div>
-                        </div>
-
-                        <!-- Leadership & Mentorship -->
-                        <div class="achievement-card card-animated-border dark-card neon-border hover:neon-hover p-6 rounded-xl border shadow-lg text-center transition-all duration-300">
-                            <div class="achievement-icon mb-4">
-                                <i class="fas fa-users text-4xl text-purple-400"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 text-indigo-300">Leadership & Mentorship</h3>
-                            <p class="text-indigo-200 mb-3">Academic Tutoring</p>
-                            <div class="achievement-details text-sm text-indigo-100">
-                                <p class="mb-2"><span class="font-semibold text-pink-400">Role:</span> <span class="text-indigo-200">UG Tutor</span></p>
-                                <p class="mb-2"><span class="font-semibold text-pink-400">Subject:</span> <span class="text-indigo-200">Professional Communication</span></p>
-                                <p><span class="font-semibold text-pink-400">Impact:</span> <span class="text-indigo-200">50+ Students Mentored</span></p>
-                            </div>
-                        </div>
-
-                        <!-- Technical Expertise -->
-                        <div class="achievement-card card-animated-border dark-card neon-border hover:neon-hover p-6 rounded-xl border shadow-lg text-center transition-all duration-300">
-                            <div class="achievement-icon mb-4">
-                                <i class="fas fa-cogs text-4xl text-orange-400"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 text-indigo-300">Technical Expertise</h3>
-                            <p class="text-indigo-200 mb-3">AI/ML Specialization</p>
-                            <div class="achievement-details text-sm text-indigo-100">
-                                <p class="mb-2"><span class="font-semibold text-pink-400">Focus:</span> <span class="text-indigo-200">Multimodal AI</span></p>
-                                <p class="mb-2"><span class="font-semibold text-pink-400">Expertise:</span> <span class="text-indigo-200">LLM Fine-tuning</span></p>
-                                <p><span class="font-semibold text-pink-400">Projects:</span> <span class="text-indigo-200">10+ AI Systems</span></p>
-                            </div>
-                        </div>
-
-                        <!-- Industry Experience -->
-                        <div class="achievement-card card-animated-border dark-card neon-border hover:neon-hover p-6 rounded-xl border shadow-lg text-center transition-all duration-300">
-                            <div class="achievement-icon mb-4">
-                                <i class="fas fa-industry text-4xl text-teal-400"></i>
-                            </div>
-                            <h3 class="text-xl font-semibold mb-2 text-indigo-300">Industry Experience</h3>
-                            <p class="text-indigo-200 mb-3">Siemens Internship</p>
-                            <div class="achievement-details text-sm text-indigo-100">
-                                <p class="mb-2"><span class="font-semibold text-pink-400">Project:</span> <span class="text-indigo-200">COSEE</span></p>
-                                <p class="mb-2"><span class="font-semibold text-pink-400">Focus:</span> <span class="text-indigo-200">AI Workflow Optimization</span></p>
-                                <p><span class="font-semibold text-pink-400">Impact:</span> <span class="text-indigo-200">Performance Profiling</span></p>
-                            </div>
-                        </div>
+            <div class="mission-briefing" data-mission="amazon">
+                <div class="mission-header">
+                    <div class="mission-status completed">COMPLETED</div>
+                    <div class="mission-difficulty">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
                     </div>
                 </div>
-            </section>
-
-            <!-- Skills Section -->
-            <section id="skills" class="py-16 dark-section">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12 dark-heading">Technical Arsenal</h2>
-                <div class="max-w-6xl mx-auto">
-                    <div class="skills-grid">
-                        <div class="skill-card neon-border hover:neon-hover">
-                            <i class="fas fa-code text-indigo-400"></i>
-                            <h3 class="text-lg font-semibold">Python</h3>
-                        </div>
-                        <div class="skill-card neon-border hover:neon-hover">
-                            <i class="fab fa-js-square text-yellow-400"></i>
-                            <h3 class="text-lg font-semibold">JavaScript</h3>
-                        </div>
-                        <div class="skill-card neon-border hover:neon-hover">
-                            <i class="fas fa-c text-blue-400"></i>
-                            <h3 class="text-lg font-semibold">C/C++</h3>
-                        </div>
-                        <div class="skill-card neon-border hover:neon-hover">
-                            <i class="fas fa-database text-pink-400"></i>
-                            <h3 class="text-lg font-semibold">SQL (MySQL)</h3>
-                        </div>
-                        <div class="skill-card neon-border hover:neon-hover">
-                            <i class="fas fa-robot text-teal-300"></i>
-                            <h3 class="text-lg font-semibold">PyTorch</h3>
-                        </div>
-                        <div class="skill-card neon-border hover:neon-hover">
-                            <i class="fas fa-brain text-orange-400"></i>
-                            <h3 class="text-lg font-semibold">TensorFlow</h3>
-                        </div>
-                        <div class="skill-card neon-border hover:neon-hover">
-                            <i class="fas fa-feather-alt text-purple-400"></i>
-                            <h3 class="text-lg font-semibold">LangChain</h3>
-                        </div>
-                        <div class="skill-card neon-border hover:neon-hover">
-                            <i class="fab fa-docker text-sky-400"></i>
-                            <h3 class="text-lg font-semibold">Docker</h3>
-                        </div>
+                <div class="mission-content">
+                    <h3 class="mission-name">OPERATION AMAZON ML</h3>
+                    <p class="mission-type">Text Extraction from Images</p>
+                    <p class="mission-description">Hybrid OCR and NLP approach with fine-tuned LLaMA 3.1 8B model. Ranked Top 200 among 75,000+ participants.</p>
+                    
+                    <div class="mission-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">LLaMA 3.1</span>
+                        <span class="tech-tag">Tesseract</span>
+                        <span class="tech-tag">EasyOCR</span>
+                    </div>
+                    
+                    <div class="mission-actions">
+                        <button class="action-btn view-intel" data-target="amazon">
+                            <i class="fas fa-eye"></i>
+                            VIEW INTEL
+                        </button>
+                        <a href="#" class="action-btn deploy" target="_blank">
+                            <i class="fab fa-github"></i>
+                            CODE
+                        </a>
                     </div>
                 </div>
-            </section>
+            </div>
+
+            <div class="mission-briefing" data-mission="github">
+                <div class="mission-header">
+                    <div class="mission-status ongoing">ONGOING</div>
+                    <div class="mission-difficulty">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+                <div class="mission-content">
+                    <h3 class="mission-name">OPEN SOURCE OPERATIONS</h3>
+                    <p class="mission-type">GitHub Contributions</p>
+                    <p class="mission-description">123 contributions in the last year across various open source projects and personal repositories.</p>
+                    
+                    <div class="github-stats">
+                        <div class="stat">
+                            <span class="stat-number">123</span>
+                            <span class="stat-label">Contributions</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">25+</span>
+                            <span class="stat-label">Repositories</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mission-actions">
+                        <a href="https://github.com/Amitanand983" class="action-btn deploy" target="_blank">
+                            <i class="fab fa-github"></i>
+                            VIEW PROFILE
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Medals Section (Achievements) -->
+    <section id="medals" class="medals-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-medal"></i>
+                MEDALS & HONORS
+            </h2>
         </div>
         
-        <!-- Contact Section -->
-        <section id="contact" class="py-20 dark-section">
-            <div class="container mx-auto px-4 sm:px-6 md:px-8 text-center">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 dark-heading">Let's Build the Future</h2>
-                <p class="text-base sm:text-lg text-indigo-200 mb-8 max-w-xl sm:max-w-2xl mx-auto">
-                    I'm always open to discussing new projects, creative ideas, or opportunities to be part of an ambitious vision. Feel free to reach out.
-                </p>
-                <a href="mailto:amitanand983@gmail.com" class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 shadow-lg text-base sm:text-xl neon-border hover:neon-hover">
-                    <i class="fas fa-paper-plane mr-3"></i> Get in Touch
-                </a>
+        <div class="medals-display">
+            <div class="medal-case">
+                <div class="medal gold">
+                    <div class="medal-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="medal-ribbon"></div>
+                </div>
+                <div class="medal-info">
+                    <h3>BEST PAPER AWARD</h3>
+                    <p>EAI BODYNETS 2024</p>
+                    <p class="medal-desc">Sleep Posture Recognition with UWB Radar</p>
+                </div>
             </div>
-        </section>
-    </main>
+
+            <div class="medal-case">
+                <div class="medal silver">
+                    <div class="medal-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="medal-ribbon"></div>
+                </div>
+                <div class="medal-info">
+                    <h3>ACADEMIC EXCELLENCE</h3>
+                    <p>RGIPT Merit Scholarship</p>
+                    <p class="medal-desc">CGPA: 8.1/10 - Dean's List All Semesters</p>
+                </div>
+            </div>
+
+            <div class="medal-case">
+                <div class="medal bronze">
+                    <div class="medal-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="medal-ribbon"></div>
+                </div>
+                <div class="medal-info">
+                    <h3>COMPETITION HONOR</h3>
+                    <p>Amazon ML Challenge 2024</p>
+                    <p class="medal-desc">Top 200 among 75,000+ participants</p>
+                </div>
+            </div>
+
+            <div class="medal-case">
+                <div class="medal special">
+                    <div class="medal-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="medal-ribbon"></div>
+                </div>
+                <div class="medal-info">
+                    <h3>LEADERSHIP MEDAL</h3>
+                    <p>UG Tutor - RGIPT</p>
+                    <p class="medal-desc">Mentored 50+ students in Professional Communication</p>
+                </div>
+            </div>
+
+            <div class="medal-case">
+                <div class="medal research">
+                    <div class="medal-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="medal-ribbon"></div>
+                </div>
+                <div class="medal-info">
+                    <h3>RESEARCH COMMENDATION</h3>
+                    <p>IEEE Network Magazine 2025</p>
+                    <p class="medal-desc">Knowledge Distillation-Based AIoT Framework</p>
+                </div>
+            </div>
+
+            <div class="medal-case">
+                <div class="medal industry">
+                    <div class="medal-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <div class="medal-ribbon"></div>
+                </div>
+                <div class="medal-info">
+                    <h3>INDUSTRY SERVICE</h3>
+                    <p>Siemens Technical Intern</p>
+                    <p class="medal-desc">AI Workflow Optimization - COSEE Project</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="section-header">
+            <h2 class="section-title">
+                <i class="fas fa-radio"></i>
+                ESTABLISH CONTACT
+            </h2>
+        </div>
+        
+        <div class="contact-container">
+            <div class="radio-equipment">
+                <div class="radio-display">
+                    <div class="frequency-display">
+                        <span class="frequency">FREQ: 98.3 MHz</span>
+                        <div class="signal-bars">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                    </div>
+                    <div class="contact-message">
+                        <p>Ready to collaborate on your next mission? Let's build something extraordinary together.</p>
+                    </div>
+                </div>
+                
+                <div class="contact-channels">
+                    <a href="mailto:amitanand983@gmail.com" class="contact-btn email">
+                        <i class="fas fa-envelope"></i>
+                        <span>SEND MESSAGE</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/amit-anand-0015b2145" target="_blank" class="contact-btn linkedin">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LINKEDIN</span>
+                    </a>
+                    <a href="https://github.com/amitanand983" target="_blank" class="contact-btn github">
+                        <i class="fab fa-github"></i>
+                        <span>GITHUB</span>
+                    </a>
+                    <a href="https://orcid.org/0009-0006-9856-1026" target="_blank" class="contact-btn orcid">
+                        <i class="fab fa-orcid"></i>
+                        <span>ORCID</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Detail Modals -->
+    <div id="mission-modal" class="mission-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">MISSION DETAILS</h3>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Content will be injected here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white">
-        <div class="container mx-auto px-4 sm:px-6 md:px-8 py-10 text-center">
-            <div class="flex justify-center items-center space-x-6 text-2xl mb-6">
-                <a href="https://github.com/amitanand983" target="_blank" class="hover:text-indigo-400 transition duration-300" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/amit-anand-0015b2145" target="_blank" class="hover:text-indigo-400 transition duration-300" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://orcid.org/0009-0006-9856-1026" target="_blank" class="hover:text-indigo-400 transition duration-300" aria-label="ORCID">
-                    <i class="fab fa-orcid"></i>
-                </a>
+    <footer class="military-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-shield-alt"></i>
+                <span>COMMANDER AMIT - FULL STACK OPERATIONS</span>
             </div>
-            <p>&copy; <span id="year"></span> Amit Anand. Crafted with passion.</p>
+            <div class="footer-stats">
+                <span>CLASSIFIED LEVEL: TOP SECRET</span>
+                <span>|</span>
+                <span>&copy; <span id="current-year"></span> AMIT ANAND</span>
+            </div>
         </div>
     </footer>
-    
-    <!-- Back to Top Button -->
-    <button id="to-top-button" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold w-12 h-12 rounded-full transition duration-300 shadow-lg neon-border hover:neon-hover">
-        <i class="fas fa-arrow-up"></i>
-    </button>
 
-    <!-- Project Modals -->
-    <div id="summai-modal" class="modal-overlay">
-        <div class="modal-container p-6 md:p-8">
-            <div class="flex justify-between items-center pb-4 border-b">
-                <h3 class="text-2xl font-bold">SummAI Case Study</h3>
-                <button class="modal-close text-2xl text-gray-500 hover:text-gray-800">&times;</button>
-            </div>
-            <div class="py-6">
-                <img src="https://placehold.co/600x300/302b63/ffffff?text=SummAI+Interface" alt="SummAI Project Image" class="rounded-lg mb-6">
-                <h4 class="text-xl font-semibold mb-2">The Challenge</h4>
-                <p class="text-gray-600 mb-4">Information overload is a major challenge for students and professionals. The goal was to create a unified platform that could quickly ingest and process various media formats (text, audio, video) and provide concise summaries and accurate answers to user queries.</p>
-                <h4 class="text-xl font-semibold mb-2">My Solution</h4>
-                <p class="text-gray-600 mb-4">I built an AI-driven platform leveraging a microservices-style architecture. It uses LangChain to create robust data processing pipelines, integrating Whisper for audio transcription and various Groq models (like LLaMA 3 and Mixtral) for summarization and Q&A. The solution achieves a 3-second average processing time and supports a context of over 128k tokens.</p>
-                <h4 class="text-xl font-semibold mb-2">Tech Stack</h4>
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">Python</span>
-                    <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">LangChain</span>
-                    <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">Streamlit</span>
-                    <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">Groq API</span>
-                    <span class="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">Whisper</span>
-                </div>
-                <div class="flex space-x-4">
-                    <a href="#" class="bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 w-full text-center">
-                        <i class="fas fa-external-link-alt mr-2"></i>Live Demo
-                    </a>
-                    <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 w-full text-center">
-                        <i class="fab fa-github mr-2"></i>View Code
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="amazon-modal" class="modal-overlay">
-        <div class="modal-container p-6 md:p-8">
-            <div class="flex justify-between items-center pb-4 border-b">
-                <h3 class="text-2xl font-bold">Amazon ML Challenge Case Study</h3>
-                <button class="modal-close text-2xl text-gray-500 hover:text-gray-800">&times;</button>
-            </div>
-            <div class="py-6">
-                <img src="https://placehold.co/600x300/4a5568/ffffff?text=OCR+%2B+LLM" alt="Amazon ML Challenge Project Image" class="rounded-lg mb-6">
-                <h4 class="text-xl font-semibold mb-2">The Challenge</h4>
-                <p class="text-gray-600 mb-4">The task was to accurately extract structured data (product quantities and units) from unstructured text found in images of receipts and invoices. This required overcoming challenges like varied image quality, different fonts, and inconsistent text formatting.</p>
-                <h4 class="text-xl font-semibold mb-2">My Solution</h4>
-                <p class="text-gray-600 mb-4">I designed a hybrid system combining multiple OCR engines (Tesseract and EasyOCR) to maximize text extraction accuracy. The extracted text was then fed into a fine-tuned LLaMA 3.1 8B model. The model was specifically trained to identify and predict quantities and units, resulting in a robust solution that placed in the top 200 among over 75,000 participants.</p>
-                <h4 class="text-xl font-semibold mb-2">Tech Stack</h4>
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Python</span>
-                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">PyTorch</span>
-                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">LLaMA 3.1</span>
-                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Tesseract</span>
-                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">EasyOCR</span>
-                    <span class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">Fine-tuning</span>
-                </div>
-                <div class="flex space-x-4">
-                    <a href="#" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-full transition duration-300 w-full text-center">
-                        <i class="fab fa-github mr-2"></i>View Code
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Floating Particles Background -->
-    <canvas id="particles-canvas" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;opacity:0.18;"></canvas>
-
-    <!-- External JavaScript -->
+    <!-- Scripts -->
     <script src="js/main.js"></script>
 </body>
 </html>
