@@ -608,6 +608,8 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-top: 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .weapon-crate {
@@ -620,6 +622,11 @@ section {
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .weapon-crate::before {
@@ -633,6 +640,7 @@ section {
     animation: rotate 4s linear infinite;
     opacity: 0;
     transition: opacity 0.3s;
+    z-index: -1;
 }
 
 .weapon-crate:hover::before {
@@ -655,6 +663,7 @@ section {
     margin-bottom: 15px;
     position: relative;
     z-index: 1;
+    display: block;
 }
 
 .weapon-name {
@@ -664,11 +673,13 @@ section {
     margin-bottom: 15px;
     position: relative;
     z-index: 1;
+    display: block;
 }
 
 .weapon-level {
     position: relative;
     z-index: 1;
+    width: 100%;
 }
 
 .level-bar {
@@ -678,6 +689,7 @@ section {
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 8px;
+    position: relative;
 }
 
 .level-fill {
@@ -685,12 +697,14 @@ section {
     background: linear-gradient(90deg, var(--army-green), var(--success-green));
     border-radius: 4px;
     transition: width 1s ease;
+    display: block;
 }
 
 .level-text {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--success-green);
+    display: block;
 }
 
 /* Missions Section */
@@ -699,6 +713,8 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
     margin-top: 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .mission-briefing {
@@ -709,6 +725,9 @@ section {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
 }
 
 .mission-briefing::before {
@@ -720,6 +739,7 @@ section {
     height: 100%;
     background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.1), transparent);
     transition: left 0.6s;
+    z-index: 0;
 }
 
 .mission-briefing:hover::before {
@@ -737,6 +757,8 @@ section {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
 }
 
 .mission-status {
@@ -745,6 +767,7 @@ section {
     font-size: 0.8rem;
     font-weight: 700;
     text-transform: uppercase;
+    display: inline-block;
 }
 
 .mission-status.completed {
@@ -765,12 +788,19 @@ section {
 .mission-difficulty i {
     color: var(--accent-orange);
     font-size: 1rem;
+    display: inline-block;
 }
 
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 .mission-name {
     font-size: 1.5rem;
     color: var(--accent-orange);
     margin-bottom: 10px;
+    display: block;
 }
 
 .mission-type {
@@ -778,12 +808,15 @@ section {
     font-weight: 600;
     margin-bottom: 15px;
     font-size: 1.1rem;
+    display: block;
 }
 
 .mission-description {
     color: var(--text-light);
     line-height: 1.6;
     margin-bottom: 20px;
+    display: block;
+    flex: 1;
 }
 
 .mission-tech {
@@ -800,12 +833,14 @@ section {
     border-radius: 12px;
     font-size: 0.8rem;
     font-weight: 600;
+    display: inline-block;
 }
 
 .mission-actions {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
+    margin-top: auto;
 }
 
 .action-btn {
@@ -820,6 +855,8 @@ section {
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 0.9rem;
+    position: relative;
+    z-index: 2;
 }
 
 .action-btn.view-intel {
@@ -841,6 +878,8 @@ section {
     display: flex;
     gap: 30px;
     margin: 20px 0;
+    position: relative;
+    z-index: 1;
 }
 
 .stat {
@@ -866,6 +905,8 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 40px;
+    position: relative;
+    z-index: 1;
 }
 
 .medal-case {
@@ -879,6 +920,7 @@ section {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    min-height: 150px;
 }
 
 .medal-case::before {
@@ -913,6 +955,7 @@ section {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    z-index: 1;
 }
 
 .medal.gold {
@@ -948,6 +991,7 @@ section {
 .medal-icon {
     font-size: 2rem;
     color: var(--dark-gray);
+    display: block;
 }
 
 .medal-ribbon {
@@ -961,21 +1005,27 @@ section {
     clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
 }
 
+    position: relative;
+    z-index: 1;
+    flex: 1;
 .medal-info h3 {
     color: var(--accent-orange);
     font-size: 1.3rem;
     margin-bottom: 8px;
+    display: block;
 }
 
 .medal-info p {
     color: var(--text-light);
     margin-bottom: 5px;
+    display: block;
 }
 
 .medal-desc {
     font-size: 0.9rem;
     color: var(--text-white);
     font-style: italic;
+    display: block;
 }
 
 /* Contact Section */
