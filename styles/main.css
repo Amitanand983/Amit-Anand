@@ -620,7 +620,6 @@ section {
     text-align: center;
     transition: all 0.3s ease;
     position: relative;
-    overflow: hidden;
     cursor: pointer;
     min-height: 200px;
     display: flex;
@@ -629,27 +628,6 @@ section {
     align-items: center;
 }
 
-.weapon-crate::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: conic-gradient(from 0deg, transparent, var(--accent-orange), transparent);
-    animation: rotate 4s linear infinite;
-    opacity: 0;
-    transition: opacity 0.3s;
-    z-index: -1;
-}
-
-.weapon-crate:hover::before {
-    opacity: 0.1;
-}
-
-@keyframes rotate {
-    100% { transform: rotate(360deg); }
-}
 
 .weapon-crate:hover {
     transform: translateY(-10px) scale(1.05);
@@ -661,9 +639,6 @@ section {
     font-size: 3rem;
     color: var(--accent-orange);
     margin-bottom: 15px;
-    position: relative;
-    z-index: 1;
-    display: block;
 }
 
 .weapon-name {
@@ -671,14 +646,9 @@ section {
     font-weight: 700;
     color: var(--text-white);
     margin-bottom: 15px;
-    position: relative;
-    z-index: 1;
-    display: block;
 }
 
 .weapon-level {
-    position: relative;
-    z-index: 1;
     width: 100%;
 }
 
@@ -689,7 +659,6 @@ section {
     border-radius: 4px;
     overflow: hidden;
     margin-bottom: 8px;
-    position: relative;
 }
 
 .level-fill {
@@ -697,14 +666,12 @@ section {
     background: linear-gradient(90deg, var(--army-green), var(--success-green));
     border-radius: 4px;
     transition: width 1s ease;
-    display: block;
 }
 
 .level-text {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--success-green);
-    display: block;
 }
 
 /* Missions Section */
@@ -748,27 +715,11 @@ section {
 
 .mission-briefing:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     border-color: var(--accent-orange);
 }
 
 .mission-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 1;
-}
-
-.mission-status {
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    display: inline-block;
-}
 
 .mission-status.completed {
     background: var(--success-green);
@@ -781,26 +732,23 @@ section {
 }
 
 .mission-difficulty {
-    display: flex;
-    gap: 2px;
 }
 
 .mission-difficulty i {
     color: var(--accent-orange);
     font-size: 1rem;
-    display: inline-block;
 }
 
-    position: relative;
-    z-index: 1;
+.mission-content {
     flex: 1;
     display: flex;
     flex-direction: column;
+}
+
 .mission-name {
     font-size: 1.5rem;
     color: var(--accent-orange);
     margin-bottom: 10px;
-    display: block;
 }
 
 .mission-type {
@@ -808,14 +756,12 @@ section {
     font-weight: 600;
     margin-bottom: 15px;
     font-size: 1.1rem;
-    display: block;
 }
 
 .mission-description {
     color: var(--text-light);
     line-height: 1.6;
     margin-bottom: 20px;
-    display: block;
     flex: 1;
 }
 
@@ -960,27 +906,9 @@ section {
 
 .medal.gold {
     background: linear-gradient(145deg, #ffd700, #ffed4e);
-    border: 3px solid #b8860b;
 }
 
 .medal.silver {
-    background: linear-gradient(145deg, #c0c0c0, #e5e5e5);
-    border: 3px solid #808080;
-}
-
-.medal.bronze {
-    background: linear-gradient(145deg, #cd7f32, #d4af37);
-    border: 3px solid #8b4513;
-}
-
-.medal.special {
-    background: linear-gradient(145deg, var(--accent-orange), #ff8c00);
-    border: 3px solid var(--brown);
-}
-
-.medal.research {
-    background: linear-gradient(145deg, #9370db, #ba55d3);
-    border: 3px solid #4b0082;
 }
 
 .medal.industry {
@@ -996,36 +924,32 @@ section {
 
 .medal-ribbon {
     position: absolute;
-    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
     width: 20px;
     height: 30px;
     background: var(--danger-red);
-    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
 }
 
-    position: relative;
-    z-index: 1;
+.medal-info {
     flex: 1;
+}
+
 .medal-info h3 {
     color: var(--accent-orange);
     font-size: 1.3rem;
     margin-bottom: 8px;
-    display: block;
 }
 
 .medal-info p {
     color: var(--text-light);
     margin-bottom: 5px;
-    display: block;
 }
 
 .medal-desc {
     font-size: 0.9rem;
     color: var(--text-white);
     font-style: italic;
-    display: block;
 }
 
 /* Contact Section */
