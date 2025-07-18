@@ -522,26 +522,23 @@ class BackToTop {
     }
 }
 
-// ===== PARALLAX EFFECTS =====
-class ParallaxEffects {
-    constructor() {
-        this.init();
-    }
+// ===== LENIS SMOOTH SCROLL =====
+// Add Lenis via CDN in index.html, then initialize here
+const lenis = new Lenis({
+  autoRaf: true,
+});
 
-    init() {
-        window.addEventListener('scroll', utils.debounce(() => {
-            this.updateParallax();
-        }, 10));
-    }
+// Optionally, listen for scroll events
+lenis.on('scroll', (e) => {
+  // You can add custom logic here if needed
+});
 
-    updateParallax() {
-        const scrolled = window.scrollY;
-        const parallax = document.querySelector('.parallax-bg');
-        if (parallax) {
-            parallax.style.transform = `translateY(${scrolled * 0.25}px)`;
-        }
-    }
-}
+// If you want to use a custom raf loop instead of autoRaf:
+// function raf(time) {
+//   lenis.raf(time);
+//   requestAnimationFrame(raf);
+// }
+// requestAnimationFrame(raf);
 
 // ===== ACHIEVEMENTS SECTION FIX =====
 class AchievementsFix {
@@ -596,7 +593,6 @@ class Portfolio {
         new InteractiveResume();
         new Animations();
         new BackToTop();
-        new ParallaxEffects();
         new AchievementsFix();
         new Footer();
     }
